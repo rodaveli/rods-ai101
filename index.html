@@ -71,6 +71,30 @@
             <div class="lesson-grid" id="lessonGrid"></div>
         </section>
 
+        <section class="leaderboard" id="leaderboard">
+            <div class="leaderboard-card">
+                <div class="leaderboard-head">
+                    <div>
+                        <h2>Leaderboard</h2>
+                        <p>Top 25 by correct answers.</p>
+                    </div>
+                    <form class="score-form" id="scoreForm">
+                        <input
+                            id="scoreName"
+                            name="scoreName"
+                            type="text"
+                            placeholder="Enter your name"
+                            maxlength="40"
+                            required
+                        />
+                        <button class="primary-btn" type="submit">Submit score</button>
+                    </form>
+                </div>
+                <div class="score-message" id="scoreMessage" aria-live="polite"></div>
+                <ol class="leaderboard-list" id="leaderboardList"></ol>
+            </div>
+        </section>
+
         <footer>
             <span>AI101</span>
             <span class="footer-dot">•</span>

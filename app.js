@@ -452,6 +452,9 @@ const lessons = [
     }
 ];
 
+const API_BASE = "/api/ai101";
+const LEADERBOARD_ENDPOINT = `${API_BASE}/leaderboard`;
+const SCORE_ENDPOINT = `${API_BASE}/score`;
 const STORAGE_KEY = "ai101-progress-v1";
 let currentFilter = "all";
 let questionData = {};
@@ -465,6 +468,10 @@ const accuracyRate = document.getElementById("accuracyRate");
 const progressFill = document.getElementById("progressFill");
 const filterLabel = document.getElementById("filterLabel");
 const resetProgress = document.getElementById("resetProgress");
+const leaderboardList = document.getElementById("leaderboardList");
+const scoreForm = document.getElementById("scoreForm");
+const scoreName = document.getElementById("scoreName");
+const scoreMessage = document.getElementById("scoreMessage");
 
 function loadProgress() {
     try {
@@ -490,6 +497,102 @@ function updateScoreboard(totalQuestions) {
     accuracyRate.textContent = `${accuracy}%`;
     const progress = totalQuestions === 0 ? 0 : Math.round((state.answered / totalQuestions) * 100);
     progressFill.style.width = `${progress}%`;
+}
+
+function setScoreMessage(message, tone) {
+    if (!scoreMessage) {
+        return;
+    }
+    scoreMessage.textContent = message;
+    scoreMessage.classList.remove("error", "success");
+    if (tone) {
+        scoreMessage.classList.add(tone);
+    }
+}
+
+function formatTimestamp(timestamp) {
+    if (!timestamp) {
+        return "";
+    }
+    const date = new Date(timestamp);
+    if (Number.isNaN(date.getTime())) {
+        return "";
+    }
+    return date.toLocaleString();
+}
+
+function renderLeaderboard(entries) {
+    if (!leaderboardList) {
+        return;
+    }
+    leaderboardList.innerHTML = "";
+    if (!entries.length) {
+        const empty = document.createElement("li");
+        empty.className = "leaderboard-empty";
+        empty.textContent = "No scores yet. Be the first!";
+        leaderboardList.appendChild(empty);
+        return;
+    }
+
+    entries.forEach((entry, index) => {
+        const row = document.createElement("li");
+        row.className = "leaderboard-row";
+        const answered = Number(entry.answered || 0);
+        const total = Number(entry.total || 0);
+        const score = Number(entry.score || 0);
+        const scoreText = total > 0 ? `${score}/${total}` : `${score}`;
+        const timestamp = formatTimestamp(entry.timestamp);
+
+        const rank = document.createElement("span");
+        rank.className = "lb-rank";
+        rank.textContent = String(index + 1);
+
+        const name = document.createElement("span");
+        name.className = "lb-name";
+        name.textContent = entry.name || "Anonymous";
+
+        const meta = document.createElement("span");
+        meta.className = "lb-meta";
+        meta.textContent = timestamp ? `${scoreText} | ${timestamp}` : scoreText;
+
+        row.append(rank, name, meta);
+        leaderboardList.appendChild(row);
+    });
+}
+
+async function fetchLeaderboard() {
+    if (!leaderboardList) {
+        return;
+    }
+    try {
+        const response = await fetch(LEADERBOARD_ENDPOINT, { cache: "no-store" });
+        if (!response.ok) {
+            throw new Error("leaderboard_failed");
+        }
+        const data = await response.json();
+        const entries = Array.isArray(data.entries) ? data.entries : [];
+        renderLeaderboard(entries);
+    } catch (error) {
+        renderLeaderboard([]);
+        setScoreMessage("Leaderboard is unavailable right now.", "error");
+    }
+}
+
+async function submitScore(name) {
+    const payload = {
+        name,
+        score: state.correct,
+        answered: state.answered,
+        total: totalQuestions()
+    };
+    const response = await fetch(SCORE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    });
+    if (!response.ok) {
+        throw new Error("submit_failed");
+    }
 }
 
 function buildQuestionHtml(lesson, question, index) {
@@ -664,6 +767,33 @@ resetProgress.addEventListener("click", () => {
     renderLessons();
 });
 
+if (scoreForm) {
+    scoreForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!scoreName) {
+            return;
+        }
+        const name = scoreName.value.trim();
+        if (!name) {
+            setScoreMessage("Please enter your name.", "error");
+            return;
+        }
+        if (state.answered === 0) {
+            setScoreMessage("Answer at least one question before submitting.", "error");
+            return;
+        }
+        setScoreMessage("Submitting score...");
+        try {
+            await submitScore(name);
+            scoreName.value = "";
+            setScoreMessage("Score submitted!", "success");
+            await fetchLeaderboard();
+        } catch (error) {
+            setScoreMessage("Could not submit score. Try again.", "error");
+        }
+    });
+}
+
 const filterButtons = document.querySelectorAll(".filter-btn");
 filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -675,3 +805,4 @@ filterButtons.forEach((btn) => {
 });
 
 renderLessons();
+fetchLeaderboard();

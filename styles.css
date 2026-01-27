@@ -435,6 +435,117 @@ main {
     color: var(--ink-muted);
 }
 
+.leaderboard {
+    margin-bottom: 36px;
+}
+
+.leaderboard-card {
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: rgba(24, 24, 70, 0.85);
+    padding: 24px;
+    box-shadow: 0 16px 40px rgba(3, 3, 40, 0.55);
+}
+
+.leaderboard-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.leaderboard-head h2 {
+    margin: 0;
+    font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    font-size: 1.5rem;
+}
+
+.leaderboard-head p {
+    margin: 6px 0 0;
+    color: var(--ink-muted);
+}
+
+.score-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.score-form input {
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(3, 3, 40, 0.7);
+    padding: 10px 16px;
+    color: var(--ink);
+    min-width: 200px;
+}
+
+.score-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.score-message {
+    margin-top: 12px;
+    min-height: 20px;
+    color: var(--ink-muted);
+}
+
+.score-message.error {
+    color: #f97a99;
+}
+
+.score-message.success {
+    color: #4bd6b5;
+}
+
+.leaderboard-list {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.leaderboard-row {
+    display: grid;
+    grid-template-columns: 36px minmax(140px, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(3, 3, 40, 0.6);
+    border: 1px solid rgba(196, 129, 243, 0.12);
+}
+
+.leaderboard-row span {
+    font-size: 0.95rem;
+}
+
+.lb-rank {
+    font-weight: 700;
+    color: #d9b5ff;
+}
+
+.lb-name {
+    font-weight: 600;
+}
+
+.lb-meta {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+}
+
+.leaderboard-empty {
+    text-align: center;
+    color: var(--ink-muted);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px dashed rgba(196, 129, 243, 0.2);
+}
+
 footer {
     display: flex;
     gap: 12px;
@@ -522,5 +633,14 @@ footer {
     .primary-btn,
     .ghost-btn {
         width: 100%;
+    }
+
+    .leaderboard-row {
+        grid-template-columns: 24px 1fr;
+    }
+
+    .lb-meta {
+        grid-column: 1 / -1;
+        text-align: left;
     }
 }
