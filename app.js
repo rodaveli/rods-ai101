@@ -49,13 +49,14 @@ const lessons = [
         title: "Models",
         track: "Basics",
         time: "2 min",
-        summary: "A model predicts the next token based on patterns it learned during training.",
+        summary: "A model is a trained statistical engine that predicts the next token.",
         points: [
-            "Training learns statistical patterns from data.",
-            "At runtime it outputs probabilities, not facts.",
+            "Training learns patterns; inference applies them to new inputs.",
+            "Outputs are probabilistic, so confidence is not a guarantee of truth.",
+            "Models do not see external data unless you connect tools or RAG.",
             "Model choice trades cost, latency, and capability."
         ],
-        aeAngle: "Explain that Evo scores AI component risk so only trusted models get deployed.",
+        aeAngle: "Set expectations: models are probabilistic and need guardrails and monitoring.",
         quiz: [
             {
                 question: "What does a model produce at each step?",
@@ -226,16 +227,16 @@ const lessons = [
     },
     {
         id: "tools",
-        title: "Tools & APIs",
+        title: "Tools, APIs & MCP servers",
         track: "Security",
         time: "2 min",
-        summary: "Agents call tools and APIs, which expands capability and risk.",
+        summary: "Agents call tools and APIs; MCP servers expose tools and data to models.",
         points: [
             "Tool access can change or exfiltrate data.",
-            "Least privilege and allowlists reduce blast radius.",
-            "Monitor tool usage and enforce policies."
+            "MCP servers standardize tool access and expand the attack surface.",
+            "Least privilege, allowlists, and monitoring reduce blast radius."
         ],
-        aeAngle: "AI-SPM policies can restrict tool access and data scope.",
+        aeAngle: "Use AI-SPM discovery to inventory tool/MCP usage and enforce policy guardrails.",
         quiz: [
             {
                 question: "What is the main risk of tool access?",
@@ -248,14 +249,14 @@ const lessons = [
                 explain: "Tools let models act, not just answer."
             },
             {
-                question: "Least privilege means?",
+                question: "MCP servers are used to?",
                 options: [
-                    "Grant only the minimum access needed",
-                    "Give full admin access to avoid failures",
-                    "Let the model decide permissions"
+                    "Expose tools and data to AI agents",
+                    "Store training data only",
+                    "Replace vector databases"
                 ],
                 correct: 0,
-                explain: "Minimal access reduces damage from misuse."
+                explain: "MCP servers make tools available to agents."
             },
             {
                 question: "Which control helps prevent unsafe tool use?",
