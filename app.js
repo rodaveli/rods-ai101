@@ -234,9 +234,9 @@ const lessons = [
         points: [
             "Tool access can change or exfiltrate data.",
             "MCP servers standardize tool access and expand the attack surface.",
-            "Least privilege, allowlists, and monitoring reduce blast radius."
+            "Discovery + risk intelligence helps prioritize risky MCP usage."
         ],
-        aeAngle: "Use AI-SPM discovery to inventory tool/MCP usage and enforce policy guardrails.",
+        aeAngle: "AI-SPM Discovery finds MCP usage; Risk Intelligence scores it; Policy notifies on misuse.",
         quiz: [
             {
                 question: "What is the main risk of tool access?",
@@ -322,11 +322,11 @@ const lessons = [
         time: "2 min",
         summary: "You cannot secure AI systems you cannot inventory.",
         points: [
-            "Map models, datasets, prompts, agents, and tools.",
-            "Discovery reduces shadow AI and unmanaged risk.",
-            "Inventory enables policy and risk scoring."
+            "Map models, datasets, prompts, agents, and MCP servers.",
+            "Discovery reduces shadow AI hidden in code and build artifacts.",
+            "AI-BOMs support compliance and audit readiness (EU AI Act)."
         ],
-        aeAngle: "Evo's Discovery Agent maps AI assets across repos and apps for visibility.",
+        aeAngle: "Discovery Agent builds a single AI inventory across code assets and dependencies.",
         quiz: [
             {
                 question: "An AI-BOM is best described as?",
@@ -341,12 +341,12 @@ const lessons = [
             {
                 question: "Why start with discovery?",
                 options: [
-                    "Security needs visibility across the AI ecosystem",
+                    "Security needs visibility across AI use in code",
                     "It makes models faster",
                     "It reduces token usage"
                 ],
                 correct: 0,
-                explain: "You cannot secure what you cannot see."
+                explain: "You cannot secure what you cannot see in the supply chain."
             },
             {
                 question: "Evo's Discovery Agent does what?",
@@ -365,23 +365,23 @@ const lessons = [
         title: "Guardrails & governance",
         track: "Security",
         time: "2 min",
-        summary: "Guardrails are executable rules that control model use, data access, and compliance.",
+        summary: "Policies notify teams about new or improper AI component usage.",
         points: [
-            "Policies must span development and runtime.",
-            "Guardrails enforce model, data, and tool usage.",
-            "Risk intelligence informs policy decisions."
+            "Policies define acceptable model, data, and MCP use.",
+            "Alerts surface shadow AI and policy violations quickly.",
+            "Risk intelligence informs policy priorities."
         ],
-        aeAngle: "Policy Agent enforces guardrails; Risk Intelligence Agent scores AI component risk.",
+        aeAngle: "Policy Agent notifies security teams of new AI assets and improper use.",
         quiz: [
             {
-                question: "Guardrails should be?",
+                question: "Policies should be?",
                 options: [
-                    "Executable policies across development and runtime",
+                    "Codified rules that trigger notifications on misuse",
                     "Only a single system prompt",
                     "Only a firewall"
                 ],
                 correct: 0,
-                explain: "Guardrails are continuous, enforceable controls."
+                explain: "AI-SPM policies notify teams when usage breaks rules."
             },
             {
                 question: "What does a Policy Agent govern?",
@@ -410,13 +410,13 @@ const lessons = [
         title: "Risk intelligence & prioritization",
         track: "Security",
         time: "2 min",
-        summary: "Risk intelligence scores AI components so teams focus on the highest-risk exposures.",
+        summary: "Risk intelligence scores AI components and MCP servers to focus on top risks.",
         points: [
-            "Continuously evaluate models, datasets, prompts, and tools.",
-            "Risk scores prioritize remediation and approvals.",
-            "Scores feed policy enforcement and governance."
+            "Evaluate models, datasets, prompts, and MCP servers.",
+            "Model risk is dynamic: jailbreaks and poisoning evolve.",
+            "Scores support compliance reviews and policy decisions."
         ],
-        aeAngle: "AI-SPM Risk Intelligence Agent gives customers a risk view they can act on.",
+        aeAngle: "Risk Intelligence Agent highlights risky models and MCP servers for action.",
         quiz: [
             {
                 question: "Risk intelligence is used to?",
@@ -439,14 +439,14 @@ const lessons = [
                 explain: "Scores focus attention on the highest-risk items."
             },
             {
-                question: "Which agent can enforce controls based on risk scores?",
+                question: "Which agent can notify teams based on risk scores?",
                 options: [
                     "Policy Agent",
                     "Discovery Agent",
                     "The model itself"
                 ],
                 correct: 0,
-                explain: "Policies use risk intelligence to control usage."
+                explain: "Policies can notify teams when risk breaks thresholds."
             }
         ]
     }
