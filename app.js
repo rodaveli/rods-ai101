@@ -35,12 +35,12 @@ const lessons = [
             {
                 question: "AI SDLC covers?",
                 options: [
-                    "Build, deploy, and runtime of AI components",
+                    "Build and deploy AI components",
                     "Only model training",
                     "Only UI design"
                 ],
                 correct: 0,
-                explain: "AI security spans development through runtime."
+                explain: "AI security spans development through deployment."
             }
         ]
     },
@@ -365,23 +365,23 @@ const lessons = [
         title: "Guardrails & governance",
         track: "Security",
         time: "2 min",
-        summary: "Policies notify teams about new or improper AI component usage.",
+        summary: "Policies flag improper AI component usage in a central dashboard.",
         points: [
             "Policies define acceptable model, data, and MCP use.",
-            "Alerts surface shadow AI and policy violations quickly.",
+            "Violations are flagged for review and reporting.",
             "Risk intelligence informs policy priorities."
         ],
-        aeAngle: "Policy Agent notifies security teams of new AI assets and improper use.",
+        aeAngle: "Policy Agent flags violations in the dashboard and supports exportable lists.",
         quiz: [
             {
                 question: "Policies should be?",
                 options: [
-                    "Codified rules that trigger notifications on misuse",
+                    "Codified rules that flag misuse for review",
                     "Only a single system prompt",
                     "Only a firewall"
                 ],
                 correct: 0,
-                explain: "AI-SPM policies notify teams when usage breaks rules."
+                explain: "AI-SPM policies flag usage that breaks rules."
             },
             {
                 question: "What does a Policy Agent govern?",
@@ -439,14 +439,14 @@ const lessons = [
                 explain: "Scores focus attention on the highest-risk items."
             },
             {
-                question: "Which agent can notify teams based on risk scores?",
+                question: "Which agent can flag items based on risk scores?",
                 options: [
                     "Policy Agent",
                     "Discovery Agent",
                     "The model itself"
                 ],
                 correct: 0,
-                explain: "Policies can notify teams when risk breaks thresholds."
+                explain: "Policies can flag items when risk breaks thresholds."
             }
         ]
     }
