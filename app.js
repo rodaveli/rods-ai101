@@ -226,6 +226,96 @@ const lessons = [
         ]
     },
     {
+        id: "sales-discovery",
+        title: "Discovery questions that qualify AI-SPM",
+        track: "Sales",
+        time: "2 min",
+        summary: "Use executive-level questions to expose AI inventory, governance, and risk gaps.",
+        points: [
+            "Inventory: Can they prove what AI is in production today?",
+            "Governance: Are policies enforceable or just written?",
+            "Risk review: Who reviews model/MCP risk before deployment?"
+        ],
+        aeAngle: "Listen for manual, slow, or vague answers — that is the gap AI-SPM solves.",
+        quiz: [
+            {
+                question: "Which response signals the biggest AI-SPM gap?",
+                options: [
+                    "We can export an AI inventory report today",
+                    "We’d need weeks to compile the AI inventory",
+                    "We already track models in a live dashboard"
+                ],
+                correct: 1,
+                explain: "Manual, slow inventory indicates a visibility gap."
+            },
+            {
+                question: "Best executive-level governance question?",
+                options: [
+                    "Which prompt template do you use?",
+                    "Are AI policies enforceable or just documented?",
+                    "What is your favorite model size?"
+                ],
+                correct: 1,
+                explain: "This surfaces whether governance is real or on paper."
+            },
+            {
+                question: "Risk review focus should include?",
+                options: [
+                    "Only model behavior",
+                    "Model and MCP server risk before deployment",
+                    "UI design choices"
+                ],
+                correct: 1,
+                explain: "AI-SPM focuses on model and MCP risk in the supply chain."
+            }
+        ]
+    },
+    {
+        id: "sales-soundbites",
+        title: "Sound bites that land with executives",
+        track: "Sales",
+        time: "2 min",
+        summary: "Use concise framing to position AI-SPM as build-time visibility and governance.",
+        points: [
+            "“AI security starts where AI is built — in your code.”",
+            "“Visibility before protection: you can’t govern what you can’t see.”",
+            "“AI-SPM extends AppSec to AI without new workflows.”"
+        ],
+        aeAngle: "Pair a sound bite with a discovery question to move from interest to urgency.",
+        quiz: [
+            {
+                question: "Best sound bite for a CISO worried about sprawl?",
+                options: [
+                    "Visibility before protection: you can’t govern what you can’t see.",
+                    "We can tune your model temperature.",
+                    "We offer prompt templates."
+                ],
+                correct: 0,
+                explain: "It frames AI-SPM as a visibility and governance solution."
+            },
+            {
+                question: "Best sound bite for DevSecOps?",
+                options: [
+                    "AI-SPM extends AppSec to AI without new workflows.",
+                    "AI models are probabilistic.",
+                    "Tokens are chunks of text."
+                ],
+                correct: 0,
+                explain: "It aligns with their existing platform and workflows."
+            },
+            {
+                question: "Sound bite that anchors Snyk’s differentiation?",
+                options: [
+                    "AI security starts where AI is built — in your code.",
+                    "We can write prompts for you.",
+                    "We are a runtime-only vendor."
+                ],
+                correct: 0,
+                explain: "It ties AI-SPM to Snyk’s AppSec heritage."
+            }
+        ]
+    },
+    {
         id: "tools",
         title: "Tools, APIs & MCP servers",
         track: "Security",
@@ -751,7 +841,9 @@ function applyFilter() {
         ? "All"
         : currentFilter === "basics"
             ? "Basics"
-            : "Security";
+            : currentFilter === "security"
+                ? "Security"
+                : "Sales";
 
     filterLabel.textContent = label;
 

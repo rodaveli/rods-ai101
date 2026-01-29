@@ -300,6 +300,11 @@ main {
     color: #f0d5ff;
 }
 
+.badge.sales {
+    background: rgba(196, 129, 243, 0.28);
+    color: #f6e5ff;
+}
+
 .lesson-time {
     font-size: 0.8rem;
     color: var(--ink-muted);
