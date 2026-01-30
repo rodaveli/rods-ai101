@@ -292,6 +292,96 @@ const lessons = [
         ]
     },
     {
+        id: "sales-champion-eb",
+        title: "Champion & economic buyer path",
+        track: "Sales",
+        time: "2 min",
+        summary: "Map the AppSec champion to the executive who owns AI risk and budget.",
+        points: [
+            "Economic buyer is usually the CISO, Chief Risk Officer, or CIO.",
+            "Use the AppSec/Snyk champion as the internal guide to the AI risk owner.",
+            "Frame AI-SPM in board-level risk, compliance, and audit readiness."
+        ],
+        aeAngle: "A strong champion co-owns success criteria and opens the executive door.",
+        quiz: [
+            {
+                question: "Who most often owns AI risk posture and budget?",
+                options: [
+                    "Head of AppSec",
+                    "CISO or Chief Risk Officer",
+                    "AI engineering manager"
+                ],
+                correct: 1,
+                explain: "AI posture is usually an enterprise risk mandate."
+            },
+            {
+                question: "Best path from AppSec champion to the EB?",
+                options: [
+                    "Ask for an intro and anchor to board-level AI risk",
+                    "Send pricing and wait for forwarding",
+                    "Run a pilot without executive alignment"
+                ],
+                correct: 0,
+                explain: "Use the champion to access the AI risk owner."
+            },
+            {
+                question: "Which signal indicates a real champion?",
+                options: [
+                    "They co-own success criteria and commit to exec access",
+                    "They like the demo but avoid internal alignment",
+                    "They prefer to keep it informal and quiet"
+                ],
+                correct: 0,
+                explain: "Champions spend political capital to move the deal."
+            }
+        ]
+    },
+    {
+        id: "sales-competitive",
+        title: "Competitive positioning vs runtime-first tools",
+        track: "Sales",
+        time: "2 min",
+        summary: "Position AI-SPM as build-time discovery + governance, complementary to runtime tools like Wiz AI-SPM.",
+        points: [
+            "Runtime tools see behavior; AI-SPM sees the AI supply chain in code.",
+            "Discovery surfaces shadow AI before it reaches production.",
+            "Risk intelligence + policy flags reduce pre-deploy exposure."
+        ],
+        aeAngle: "Lead with “visibility before protection” and shift-left prevention.",
+        quiz: [
+            {
+                question: "Best response if they already use runtime monitoring?",
+                options: [
+                    "Great—AI-SPM prevents risky configs before runtime and complements it",
+                    "Then AI-SPM is unnecessary",
+                    "We replace runtime monitoring"
+                ],
+                correct: 0,
+                explain: "AI-SPM covers build-time visibility and governance."
+            },
+            {
+                question: "Which use case favors AI-SPM over runtime tools?",
+                options: [
+                    "Discovering shadow AI components in code and dependencies",
+                    "Detecting prompt injection in live traffic",
+                    "Blocking data exfiltration during inference"
+                ],
+                correct: 0,
+                explain: "AI-SPM finds AI assets in the software supply chain."
+            },
+            {
+                question: "Best competitive sound bite?",
+                options: [
+                    "Runtime tools watch behavior; AI-SPM secures AI where it’s built",
+                    "We only handle production traffic",
+                    "We are a generic AI observability tool"
+                ],
+                correct: 0,
+                explain: "It positions AI-SPM as the build-time layer."
+            }
+        ]
+    },
+    {
         id: "sales-soundbites",
         title: "Sound bites that land with executives",
         track: "Sales",
