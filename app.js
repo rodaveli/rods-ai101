@@ -15,9 +15,9 @@ const lessons = [
             {
                 question: "Agentic AI apps typically do what?",
                 options: [
-                    "Plan and call tools across steps",
-                    "Only return static answers",
-                    "Store data without processing"
+                    "Plan and call tools across multiple steps",
+                    "Only classify text with no actions",
+                    "Only retrieve documents without taking actions"
                 ],
                 correct: 0,
                 explain: "Agents take actions via tools, not just chat."
@@ -26,8 +26,8 @@ const lessons = [
                 question: "Why is the attack surface larger?",
                 options: [
                     "More tools, data sources, and integrations",
-                    "Models are smaller",
-                    "Tokens are free"
+                    "Because prompts are longer by default",
+                    "Because models are non-deterministic"
                 ],
                 correct: 0,
                 explain: "Every tool and data source adds risk."
@@ -36,8 +36,8 @@ const lessons = [
                 question: "AI SDLC covers?",
                 options: [
                     "Build and deploy AI components",
-                    "Only model training",
-                    "Only UI design"
+                    "Only model training and evaluation",
+                    "Only runtime monitoring"
                 ],
                 correct: 0,
                 explain: "AI security spans development through deployment."
@@ -62,8 +62,8 @@ const lessons = [
                 question: "What does a model produce at each step?",
                 options: [
                     "A probability distribution over next tokens",
-                    "A final answer with no uncertainty",
-                    "A database lookup"
+                    "A ranked list of full responses",
+                    "A deterministic class label only"
                 ],
                 correct: 0,
                 explain: "Models score possible next tokens; sampling picks one."
@@ -72,8 +72,8 @@ const lessons = [
                 question: "Why can two models answer the same prompt differently?",
                 options: [
                     "Different training data, size, or sampling",
-                    "Only the prompt matters",
-                    "Models are deterministic by default"
+                    "Because only the last user message is used",
+                    "Because models always return cached answers"
                 ],
                 correct: 0,
                 explain: "Data, architecture, and sampling settings all affect output."
@@ -82,8 +82,8 @@ const lessons = [
                 question: "Fine-tuning changes what?",
                 options: [
                     "The model weights",
-                    "The tokenization rules",
-                    "The internet"
+                    "The context window size",
+                    "The retrieval index only"
                 ],
                 correct: 0,
                 explain: "Fine-tuning updates weights to specialize behavior."
@@ -107,8 +107,8 @@ const lessons = [
                 question: "What is a token?",
                 options: [
                     "A chunk of text used by the model",
-                    "A sentence",
-                    "A training label"
+                    "A billing unit unrelated to text segmentation",
+                    "A database record"
                 ],
                 correct: 0,
                 explain: "Tokens can be parts of words, whole words, or symbols."
@@ -117,8 +117,8 @@ const lessons = [
                 question: "What counts toward the context window?",
                 options: [
                     "System, developer, user messages, and tool outputs",
-                    "Only the latest user message",
-                    "Only the model response"
+                    "Only user and assistant messages",
+                    "Only retrieved documents"
                 ],
                 correct: 0,
                 explain: "Everything in the conversation consumes tokens."
@@ -127,8 +127,8 @@ const lessons = [
                 question: "Why might answers be shorter?",
                 options: [
                     "The prompt used most of the token budget",
-                    "The model refuses long answers",
-                    "The user typed too fast"
+                    "Temperature is too low",
+                    "The model refuses due to policy"
                 ],
                 correct: 0,
                 explain: "Long prompts reduce available output tokens."
@@ -152,8 +152,8 @@ const lessons = [
                 question: "Which instruction has the highest priority?",
                 options: [
                     "System",
-                    "User",
-                    "Developer"
+                    "Developer (in-app instructions)",
+                    "User (latest message)"
                 ],
                 correct: 0,
                 explain: "System messages have the highest priority."
@@ -162,8 +162,8 @@ const lessons = [
                 question: "Few-shot prompting means you provide what?",
                 options: [
                     "Examples of desired outputs",
-                    "Fewer tokens",
-                    "A smaller model"
+                    "Examples of user inputs only",
+                    "A smaller model with fewer parameters"
                 ],
                 correct: 0,
                 explain: "Examples anchor the style and format."
@@ -172,8 +172,8 @@ const lessons = [
                 question: "A good prompt should include?",
                 options: [
                     "Clear constraints and output format",
-                    "As little detail as possible",
-                    "No context"
+                    "Only keywords and no structure",
+                    "As little detail as possible"
                 ],
                 correct: 0,
                 explain: "Specificity improves consistency and quality."
@@ -197,8 +197,8 @@ const lessons = [
                 question: "RAG stands for?",
                 options: [
                     "Retrieval-augmented generation",
-                    "Random answer generation",
-                    "Recursive AI grouping"
+                    "Retrieval-assisted generation",
+                    "Reinforcement-augmented generation"
                 ],
                 correct: 0,
                 explain: "RAG combines retrieval with generation."
@@ -207,8 +207,8 @@ const lessons = [
                 question: "Embeddings are mainly used to?",
                 options: [
                     "Find similar items by meaning",
-                    "Generate images",
-                    "Replace databases"
+                    "Compress prompts to reduce tokens",
+                    "Encrypt text for privacy"
                 ],
                 correct: 0,
                 explain: "Embeddings enable semantic search."
@@ -217,8 +217,8 @@ const lessons = [
                 question: "A new risk with RAG is?",
                 options: [
                     "Untrusted content injecting instructions",
-                    "Lower latency",
-                    "Too many tokens"
+                    "It bypasses system instructions automatically",
+                    "It guarantees correctness"
                 ],
                 correct: 0,
                 explain: "Retrieved text can act as an indirect prompt injection."
@@ -243,7 +243,7 @@ const lessons = [
                 options: [
                     "We can export an AI inventory report today",
                     "We’d need weeks to compile the AI inventory",
-                    "We already track models in a live dashboard"
+                    "We track models in a spreadsheet"
                 ],
                 correct: 1,
                 explain: "Manual, slow inventory indicates a visibility gap."
@@ -251,21 +251,21 @@ const lessons = [
             {
                 question: "Best executive-level governance question?",
                 options: [
-                    "Which prompt template do you use?",
                     "Are AI policies enforceable or just documented?",
-                    "What is your favorite model size?"
+                    "Do you have an AI governance board?",
+                    "Which model family do you standardize on?"
                 ],
-                correct: 1,
+                correct: 0,
                 explain: "This surfaces whether governance is real or on paper."
             },
             {
                 question: "Risk review focus should include?",
                 options: [
-                    "Only model behavior",
                     "Model and MCP server risk before deployment",
-                    "UI design choices"
+                    "Only vendor security questionnaires",
+                    "Only red teaming after launch"
                 ],
-                correct: 1,
+                correct: 0,
                 explain: "AI-SPM focuses on model and MCP risk in the supply chain."
             }
         ]
@@ -287,8 +287,8 @@ const lessons = [
                 question: "Best sound bite for a CISO worried about sprawl?",
                 options: [
                     "Visibility before protection: you can’t govern what you can’t see.",
-                    "We can tune your model temperature.",
-                    "We offer prompt templates."
+                    "We monitor model drift in production only.",
+                    "We replace your runtime detection stack."
                 ],
                 correct: 0,
                 explain: "It frames AI-SPM as a visibility and governance solution."
@@ -297,8 +297,8 @@ const lessons = [
                 question: "Best sound bite for DevSecOps?",
                 options: [
                     "AI-SPM extends AppSec to AI without new workflows.",
-                    "AI models are probabilistic.",
-                    "Tokens are chunks of text."
+                    "We require a separate console and new CI.",
+                    "We replace your existing AppSec tooling."
                 ],
                 correct: 0,
                 explain: "It aligns with their existing platform and workflows."
@@ -307,8 +307,8 @@ const lessons = [
                 question: "Sound bite that anchors Snyk’s differentiation?",
                 options: [
                     "AI security starts where AI is built — in your code.",
-                    "We can write prompts for you.",
-                    "We are a runtime-only vendor."
+                    "We only monitor runtime behavior.",
+                    "We are a generic AI observability tool."
                 ],
                 correct: 0,
                 explain: "It ties AI-SPM to Snyk’s AppSec heritage."
@@ -332,8 +332,8 @@ const lessons = [
                 question: "What is the main risk of tool access?",
                 options: [
                     "Models can take actions on data and systems",
-                    "It reduces the context window",
-                    "It lowers cost"
+                    "It increases prompt length only",
+                    "It makes tokenization inconsistent"
                 ],
                 correct: 0,
                 explain: "Tools let models act, not just answer."
@@ -342,8 +342,8 @@ const lessons = [
                 question: "MCP servers are used to?",
                 options: [
                     "Expose tools and data to AI agents",
-                    "Store training data only",
-                    "Replace vector databases"
+                    "Version models for training",
+                    "Store embeddings at scale"
                 ],
                 correct: 0,
                 explain: "MCP servers make tools available to agents."
@@ -352,8 +352,8 @@ const lessons = [
                 question: "Which control helps prevent unsafe tool use?",
                 options: [
                     "Allowlist tools and validate outputs",
-                    "Increase temperature",
-                    "Remove logging"
+                    "Disable system prompts",
+                    "Let tools decide permissions"
                 ],
                 correct: 0,
                 explain: "Gated, verified tool access reduces risk."
@@ -377,8 +377,8 @@ const lessons = [
                 question: "Prompt injection is best described as?",
                 options: [
                     "Untrusted text changing model behavior",
-                    "A model bug",
-                    "Faster inference"
+                    "A caching bug in the model",
+                    "Model drift over time"
                 ],
                 correct: 0,
                 explain: "Attackers try to subvert instructions through input."
@@ -387,8 +387,8 @@ const lessons = [
                 question: "Indirect injection comes from?",
                 options: [
                     "External content like web pages or docs",
-                    "The system prompt only",
-                    "Model weights"
+                    "Only the system prompt",
+                    "Model weight updates"
                 ],
                 correct: 0,
                 explain: "RAG pipelines can pull in hostile instructions."
@@ -397,8 +397,8 @@ const lessons = [
                 question: "A strong mitigation is?",
                 options: [
                     "Allowlist tool actions with verification",
-                    "Let the model decide everything",
-                    "Remove all system instructions"
+                    "Store secrets in the system prompt",
+                    "Disable logging"
                 ],
                 correct: 0,
                 explain: "Tool gating limits blast radius."
@@ -422,8 +422,8 @@ const lessons = [
                 question: "An AI-BOM is best described as?",
                 options: [
                     "An inventory of AI components and dependencies",
-                    "A model training dataset",
-                    "A prompt template"
+                    "A runtime monitoring service",
+                    "A policy template"
                 ],
                 correct: 0,
                 explain: "AI-BOMs catalog AI components and their usage."
@@ -432,8 +432,8 @@ const lessons = [
                 question: "Why start with discovery?",
                 options: [
                     "Security needs visibility across AI use in code",
-                    "It makes models faster",
-                    "It reduces token usage"
+                    "It reduces model latency",
+                    "It lowers inference cost"
                 ],
                 correct: 0,
                 explain: "You cannot secure what you cannot see in the supply chain."
@@ -442,8 +442,8 @@ const lessons = [
                 question: "Evo's Discovery Agent does what?",
                 options: [
                     "Maps AI assets across repositories and applications",
-                    "Writes prompts for users",
-                    "Trains models from scratch"
+                    "Generates policy recommendations",
+                    "Monitors runtime drift"
                 ],
                 correct: 0,
                 explain: "Discovery builds a complete view of AI usage."
@@ -467,8 +467,8 @@ const lessons = [
                 question: "Policies should be?",
                 options: [
                     "Codified rules that flag misuse for review",
-                    "Only a single system prompt",
-                    "Only a firewall"
+                    "Ad hoc guidelines in a wiki",
+                    "Only runtime prompts"
                 ],
                 correct: 0,
                 explain: "AI-SPM policies flag usage that breaks rules."
@@ -477,8 +477,8 @@ const lessons = [
                 question: "What does a Policy Agent govern?",
                 options: [
                     "Model use, data access, and compliance",
-                    "Only UI behavior",
-                    "Only marketing content"
+                    "Only runtime model outputs",
+                    "Only developer onboarding"
                 ],
                 correct: 0,
                 explain: "Policies control how AI is used and what it can access."
@@ -487,8 +487,8 @@ const lessons = [
                 question: "Why pair policy with risk scores?",
                 options: [
                     "To enforce controls based on risk",
-                    "To make prompts longer",
-                    "To reduce logging"
+                    "To reduce model size",
+                    "To avoid inventory"
                 ],
                 correct: 0,
                 explain: "Risk-based policies help prioritize and enforce safely."
@@ -512,8 +512,8 @@ const lessons = [
                 question: "Risk intelligence is used to?",
                 options: [
                     "Continuously evaluate AI component risk",
-                    "Reduce token costs",
-                    "Train models faster"
+                    "Generate prompt templates",
+                    "Replace model training"
                 ],
                 correct: 0,
                 explain: "Risk scoring keeps only trusted components deployed."
@@ -522,8 +522,8 @@ const lessons = [
                 question: "Why use risk scores?",
                 options: [
                     "Prioritize remediation and policy decisions",
-                    "Replace discovery",
-                    "Make prompts longer"
+                    "Eliminate the need for inventory",
+                    "Lower inference costs"
                 ],
                 correct: 0,
                 explain: "Scores focus attention on the highest-risk items."
@@ -532,8 +532,8 @@ const lessons = [
                 question: "Which agent can flag items based on risk scores?",
                 options: [
                     "Policy Agent",
-                    "Discovery Agent",
-                    "The model itself"
+                    "Risk Intelligence Agent",
+                    "Discovery Agent"
                 ],
                 correct: 0,
                 explain: "Policies can flag items when risk breaks thresholds."
@@ -587,6 +587,36 @@ function updateScoreboard(totalQuestions) {
     accuracyRate.textContent = `${accuracy}%`;
     const progress = totalQuestions === 0 ? 0 : Math.round((state.answered / totalQuestions) * 100);
     progressFill.style.width = `${progress}%`;
+}
+
+function hashString(value) {
+    let hash = 2166136261;
+    for (let i = 0; i < value.length; i += 1) {
+        hash ^= value.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+    }
+    return hash >>> 0;
+}
+
+function mulberry32(seed) {
+    let t = seed >>> 0;
+    return () => {
+        t += 0x6D2B79F5;
+        let r = t;
+        r = Math.imul(r ^ (r >>> 15), r | 1);
+        r ^= r + Math.imul(r ^ (r >>> 7), r | 61);
+        return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+    };
+}
+
+function shuffleWithSeed(items, seed) {
+    const rng = mulberry32(seed);
+    const arr = items.slice();
+    for (let i = arr.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(rng() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
 }
 
 function setScoreMessage(message, tone) {
@@ -687,18 +717,23 @@ async function submitScore(name) {
 
 function buildQuestionHtml(lesson, question, index) {
     const key = `${lesson.id}-${index}`;
+    const shuffledOptions = shuffleWithSeed(
+        question.options.map((text, optionIndex) => ({ text, optionIndex })),
+        hashString(key)
+    );
+    const correctIndex = shuffledOptions.findIndex((option) => option.optionIndex === question.correct);
     questionData[key] = {
         explain: question.explain,
-        correctIndex: question.correct
+        correctIndex
     };
 
     return `
         <div class="question" data-key="${key}" data-correct="${question.correct}">
             <div class="question-text">${index + 1}. ${question.question}</div>
             <div class="options">
-                ${question.options
+                ${shuffledOptions
                     .map((option, optionIndex) => {
-                        return `<button class="option" type="button" data-index="${optionIndex}">${option}</button>`;
+                        return `<button class="option" type="button" data-index="${optionIndex}">${option.text}</button>`;
                     })
                     .join("")}
             </div>
