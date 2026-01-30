@@ -717,11 +717,19 @@ async function submitScore(name) {
 
 function buildQuestionHtml(lesson, question, index) {
     const key = `${lesson.id}-${index}`;
-    const shuffledOptions = shuffleWithSeed(
+    let shuffledOptions = shuffleWithSeed(
         question.options.map((text, optionIndex) => ({ text, optionIndex })),
         hashString(key)
     );
-    const correctIndex = shuffledOptions.findIndex((option) => option.optionIndex === question.correct);
+    let correctIndex = shuffledOptions.findIndex((option) => option.optionIndex === question.correct);
+    if (correctIndex === 0 && shuffledOptions.length > 2) {
+        const rng = mulberry32(hashString(`${key}-bias`));
+        if (rng() < 0.1) {
+            const targetIndex = rng() < 0.5 ? 1 : 2;
+            [shuffledOptions[0], shuffledOptions[targetIndex]] = [shuffledOptions[targetIndex], shuffledOptions[0]];
+            correctIndex = targetIndex;
+        }
+    }
     questionData[key] = {
         explain: question.explain,
         correctIndex
