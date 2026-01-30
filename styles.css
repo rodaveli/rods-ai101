@@ -104,6 +104,29 @@ main {
     justify-content: center;
 }
 
+.leaderboard-btn {
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(130deg, #ff78e1, var(--accent));
+    box-shadow: 0 12px 32px rgba(255, 120, 225, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+}
+
+.leaderboard-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(255, 120, 225, 0.45);
+}
+
 .primary-btn {
     background: linear-gradient(120deg, var(--accent), var(--accent-2));
     color: #fff;
