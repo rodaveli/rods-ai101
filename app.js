@@ -229,12 +229,13 @@ const lessons = [
         id: "sales-discovery",
         title: "Discovery questions that qualify AI-SPM",
         track: "Sales",
-        time: "2 min",
+        time: "3 min",
         summary: "Use executive-level questions to expose AI inventory, governance, and risk gaps.",
         points: [
             "Inventory: Can they prove what AI is in production today?",
             "Governance: Are policies enforceable or just written?",
-            "Risk review: Who reviews model/MCP risk before deployment?"
+            "Risk review: Who reviews model/MCP risk before deployment?",
+            "Champion path: Map the AppSec champion to the AI risk owner."
         ],
         aeAngle: "Listen for manual, slow, or vague answers — that is the gap AI-SPM solves.",
         quiz: [
@@ -267,6 +268,26 @@ const lessons = [
                 ],
                 correct: 0,
                 explain: "AI-SPM focuses on model and MCP risk in the supply chain."
+            },
+            {
+                question: "Best question to reach the economic buyer?",
+                options: [
+                    "Who owns AI risk and ultimately signs off on posture investments?",
+                    "Which model do you standardize on today?",
+                    "How many prompts do you run per day?"
+                ],
+                correct: 0,
+                explain: "You need the exec who owns AI risk and budget."
+            },
+            {
+                question: "How do you move from AppSec champion to AI-SPM champion?",
+                options: [
+                    "Ask the AppSec champion to introduce the AI risk owner",
+                    "Run a pilot without any executive alignment",
+                    "Stay only with the DevOps contact"
+                ],
+                correct: 0,
+                explain: "Use the existing Snyk/AppSec champion as the path to the EB."
             }
         ]
     },
